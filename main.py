@@ -15,7 +15,9 @@ class Soldier (pygame.sprite.Sprite):
            pygame.sprite.Sprite.__init__(self) 
            img = pygame.image.load('img/player/Idle/0.png')
            # تكبير حجم الصورة
+           #def load(filename: FileArg, namehint: str = "") -> Surface
            self.image = pygame.transform.scale(img , (int(img.get_width() * scale),int ( img.get_height()* scale)))
+            #--------------------------------------- (surface - size - destination size (optional))
            # حفظ الصورة في مستطيل
            self.rect= self.image.get_rect()
            # المستطيل يتم حفظ موقعه في اكس  و واي
@@ -24,8 +26,7 @@ class Soldier (pygame.sprite.Sprite):
 
        def draw (self):
            screen.blit(self.image , self.rect)
-
-           
+   # def blit( self,source: Surface,dest: Union[Coordinate, RectValue],area: Optional[RectValue] = None,special_flags: int = 0) -> Rect: ...
 player = Soldier(200, 200 ,3) 
 
 
