@@ -56,21 +56,20 @@ class Soldier (pygame.sprite.Sprite):
            # Load all images for the player by making an array of different animation action :note name of actions = file name
            animation_types = [ 'Idle' , 'Run', 'Jump']
            for animation in animation_types :
-                 #temprerly list to store animation
-                 temp_list = []
-                 #count number of files in each folder
-                 num_of_frames =len( os.listdir(f'img/{self.char_type}/{animation}'))
-                 #loop through images using i 
-                 for i in range(num_of_frames):
-                     img = pygame.image.load(f'img/{self.char_type}/{animation}/{i}.png')
-                     #Enlarge image size
-                     #def load(filename: FileArg, namehint: str = "") -> Surface
-                     img= pygame.transform.scale(img , (int(img.get_width() * scale),int ( img.get_height()* scale)))
-                     #--------------------------------------- (surface - size - destination size (optional))
-                     temp_list.append(img)
-                 self.animation_list.append(temp_list)    
+              #temprerly list to store animation
+              temp_list = []
+              #count number of files in each folder
+              num_of_frames =len( os.listdir(f'img/{self.char_type}/{animation}'))
+              #loop through images using i 
+              for i in range(num_of_frames):
+                  img = pygame.image.load(f'img/{self.char_type}/{animation}/{i}.png')
+                  #Enlarge image size
+                  #def load(filename: FileArg, namehint: str = "") -> Surface
+                  img= pygame.transform.scale(img , (int(img.get_width() * scale),int ( img.get_height()* scale)))
+                  #--------------------------------------- (surface - size - destination size (optional))
+                  temp_list.append(img)
+              self.animation_list.append(temp_list)    
 
-           self.animation_list.append(temp_list)    
            
            self.image = self.animation_list [self.action][self.frame_index]    
            # save the picture in a rectangle
@@ -90,7 +89,7 @@ class Soldier (pygame.sprite.Sprite):
                self.direction = -1
                self.flip = True
            if moving_right:   
-               dx+= self.speed 
+               dx = self.speed 
                self.direction = 1
                self.flip = False
            #jump 
@@ -107,7 +106,7 @@ class Soldier (pygame.sprite.Sprite):
            #check collision with floor
            if self.rect.bottom + dy > 300:
                dy = 300 - self.rect.bottom
-               self.in_air -False 
+               self.in_air =False 
             
                
            #update rectangle position 
